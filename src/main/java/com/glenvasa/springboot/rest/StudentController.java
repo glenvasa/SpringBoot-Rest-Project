@@ -1,6 +1,7 @@
 package com.glenvasa.springboot.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -29,6 +30,13 @@ public class StudentController {
         students.add(new Student("Denilse", "Goncalves"));
         students.add(new Student("Glen", "Vasa"));
         return students;
+    }
+
+    //http://localhost:8080/student/ethan/vasa
+    // add URI template variables
+    @GetMapping("/student/{firstName}/{lastName}")
+    public Student studentPathVariable(@PathVariable String firstName, @PathVariable String lastName) {
+        return new Student(firstName, lastName);
     }
 
 
