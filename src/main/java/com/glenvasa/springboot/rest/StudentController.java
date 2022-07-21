@@ -3,6 +3,9 @@ package com.glenvasa.springboot.rest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // @RestController uses @ResponseBody annotation which converts return value (Java object) to HTTP response body
 // (e.g. JSON) based on content-type in request HTTP header. Spring default is JSON
 // Converter is MappingJackson2HttpMessageConverter
@@ -16,6 +19,16 @@ public class StudentController {
     @GetMapping("/student")
     public Student getStudent() {
         return new Student("Glen", "Vasa");
+    }
+
+    @GetMapping("/students")
+    public List<Student> getStudents() {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Ethan", "Vasa"));
+        students.add(new Student("Nathan", "Vasa"));
+        students.add(new Student("Denilse", "Goncalves"));
+        students.add(new Student("Glen", "Vasa"));
+        return students;
     }
 
 
